@@ -21,6 +21,11 @@ export interface ISearchRequestOptions {
   apiKey?: string;
   apiUrl?: string;
   retry?: AsyncRetry.Options;
+  /**
+   * 透传参数，用于传递搜索引擎特有的参数
+   * 例如：searchDepth, includeImages, includeAnswer 等
+   */
+  extraParams?: Record<string, any>;
 }
 
 export interface ISearchResponseResult {
