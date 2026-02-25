@@ -15,6 +15,7 @@ export async function tavilySearch(options: ISearchRequestOptions): Promise<ISea
     categories = 'general',
     timeRange,
     apiKey,
+    extraParams, // 新增：解构 extraParams
   } = options;
 
   if (!query?.trim()) {
@@ -36,6 +37,8 @@ export async function tavilySearch(options: ISearchRequestOptions): Promise<ISea
       topic: categories as TavilySearchOptions['topic'],
       timeRange: timeRange as TavilySearchOptions['timeRange'],
       maxResults: limit,
+      // 新增：展开 extraParams，透传其他参数
+      ...extraParams,
     };
 
     const res = await Promise.race([
