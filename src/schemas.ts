@@ -24,6 +24,7 @@ export const SearchSchema = z.object({
     'month',
     'year',
   ]).optional().describe('Time range for search results (default: all)'),
+  extraParams: z.record(z.any()).optional().describe('Extra parameters to pass through to search provider (e.g., searchDepth, includeImages for Tavily)'),
 });
 
 export type SearchInput = z.infer<typeof SearchSchema>;
